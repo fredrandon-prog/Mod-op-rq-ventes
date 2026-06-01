@@ -27,6 +27,14 @@
 - ✅ **Mode Paysage** - Optimisé pour les photos de paysages
 - ✅ **Amélioration des détails** - Mise en valeur des textures
 
+### 🎯 **Gommage et Clonage (NOUVEAU !)**
+- ✅ **Gommage par Rectangle** - Supprimez des zones rectangulaires
+- ✅ **Gommage Intelligent** - Supprimez automatiquement les objets détectés
+- ✅ **Clone Stamp** - Copiez et collez des parties de l'image (comme Photoshop)
+- ✅ **Clone Rectangle** - Copiez un rectangle vers un autre endroit
+- ✅ **Healing Brush** - Corrigez les imperfections en mélangeant avec les pixels environnants
+- ✅ **Remplacement Intelligent** - 4 méthodes : inpainting, flou, couleur, contexte
+
 ### 🔒 **Sans Censure**
 - ✅ **100% Local** - Aucune donnée n'est envoyée sur internet
 - ✅ **Sans restriction** - Traite **toutes** les images sans filtrage
@@ -109,6 +117,15 @@ L'application s'ouvrira dans votre navigateur par défaut à l'adresse `http://l
 - Traitez plusieurs images en une seule fois
 - Appliquez la même opération à toutes les images
 - Gain de temps pour les grandes collections
+
+#### 4️⃣ **Gommage et Clonage** ⭐ NOUVEAU
+- **Gommage par Rectangle** : Sélectionnez une zone rectangulaire à supprimer
+- **Gommage Intelligent** : Supprimez automatiquement les objets détectés
+- **Clone Stamp** : Copiez et collez des parties de l'image
+- **Clone Rectangle** : Copiez un rectangle vers un autre endroit
+- **Healing Brush** : Corrigez les imperfections
+
+> **Accès** : Cliquez sur le lien "Gommage et Clonage" dans la barre latérale
 
 ---
 
@@ -193,6 +210,142 @@ Corrige les défauts des vieilles photos :
 **Paramètres:**
 - `Force` (0.1-1.0) : Intensité globale
 - Options individuelles pour chaque correction
+
+---
+
+## 🎯 **Nouveautés : Gommage et Clonage**
+
+### 🗑️ **Gommage d'Objets**
+
+Supprimez des éléments indésirables de vos images avec plusieurs méthodes :
+
+#### Gommage par Rectangle
+- Sélectionnez une zone rectangulaire à supprimer
+- 4 méthodes de remplacement :
+  - **Inpainting** : Reconstruction intelligente (recommandé)
+  - **Flou** : Remplace par un flou de l'image
+  - **Couleur** : Remplace par une couleur unie
+  - **Contexte** : Méthode sensible au contexte
+
+**Exemple d'utilisation:**
+```python
+from processing.object_removal import remove_object_by_rectangle
+
+# Supprimer un rectangle de l'image
+result = remove_object_by_rectangle(
+    image, 
+    x=100, y=100,      # Position du coin supérieur gauche
+    width=200, height=150,  # Dimensions
+    replacement="inpainting"  # Méthode de remplacement
+)
+```
+
+#### Gommage Intelligent
+- Détection automatique des objets (personnes, animaux, etc.)
+- Utilise MediaPipe pour la segmentation
+- Supprimez soit le sujet principal, soit l'arrière-plan
+
+**Exemple d'utilisation:**
+```python
+from processing.object_removal import smart_remove
+
+# Supprimer le sujet principal
+result = smart_remove(image, method="segmentation", remove_background=False)
+
+# Supprimer l'arrière-plan
+result = smart_remove(image, method="segmentation", remove_background=True)
+```
+
+### 🖌️ **Clone Stamp**
+
+Outil de clonage inspiré de Photoshop :
+
+#### Clone Stamp Simple
+- Définissez un point source (d'où copier)
+- Appliquez sur un point cible (où coller)
+- Ajustez la taille du pinceau et l'opacité
+
+**Exemple d'utilisation:**
+```python
+from processing.clone_stamp import set_clone_source, clone_area
+
+# Définir le point source
+set_clone_source(100, 100)
+
+# Cloner vers un point cible
+result = clone_area(image, target_x=200, target_y=200, brush_size=20, opacity=1.0)
+```
+
+#### Clone Rectangle
+- Copiez un rectangle source vers un rectangle cible
+- Redimensionnement automatique si nécessaire
+
+**Exemple d'utilisation:**
+```python
+from processing.clone_stamp import clone_rectangle
+
+# Cloner un rectangle vers un autre
+result = clone_rectangle(
+    image,
+    source_rect=(50, 50, 100, 80),   # (x, y, width, height)
+    target_rect=(200, 150, 100, 80),
+    opacity=0.8
+)
+```
+
+#### Clone avec Rotation
+- Clonez avec rotation et mise à l'échelle
+
+**Exemple d'utilisation:**
+```python
+from processing.clone_stamp import clone_with_rotation
+
+result = clone_with_rotation(
+    image,
+    source_center=(100, 100),
+    target_center=(200, 200),
+    angle=45,      # Rotation de 45 degrés
+    scale=1.2,     # Agrandissement de 20%
+    brush_size=30
+)
+```
+
+#### Pattern Clone
+- Clonez un motif de manière répétée
+
+**Exemple d'utilisation:**
+```python
+from processing.clone_stamp import pattern_clone
+
+result = pattern_clone(
+    image,
+    source_rect=(50, 50, 50, 50),    # Motif source
+    target_region=(100, 100, 200, 200), # Région cible
+    spacing=30                        # Espacement entre les motifs
+)
+```
+
+### 🎨 **Healing Brush**
+
+Outil de correction pour les imperfections :
+- Mélange la zone source avec la zone cible
+- Idéal pour corriger les défauts de peau, les poussière, etc.
+
+**Exemple d'utilisation:**
+```python
+from processing.clone_stamp import set_clone_source, heal_brush
+
+# Définir le point source (zone saine)
+set_clone_source(100, 100)
+
+# Appliquer la correction
+result = heal_brush(
+    image,
+    target_x=200, target_y=200,  # Zone à corriger
+    brush_size=20,
+    sample_radius=5
+)
+```
 
 ### 👤 Mode Portrait
 
@@ -310,6 +463,22 @@ ui:
 
 **Après (512x512):**
 ![Après](examples/after_sr.jpg)
+
+### Exemple 4: Gommage d'Objets
+
+**Avant (avec objet indésirable):**
+![Avant](examples/before_object_removal.jpg)
+
+**Après (objet supprimé):**
+![Après](examples/after_object_removal.jpg)
+
+### Exemple 5: Clone Stamp
+
+**Avant (zone à corriger):**
+![Avant](examples/before_clone.jpg)
+
+**Après (zone clonée):**
+![Après](examples/after_clone.jpg)
 
 ---
 

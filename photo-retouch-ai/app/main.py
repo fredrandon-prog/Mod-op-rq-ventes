@@ -225,6 +225,17 @@ def main():
         
         st.markdown("---")
         
+        # Lien vers les outils avancés
+        st.markdown("### 🎯 Outils Avancés")
+        st.markdown("[Gommage et Clonage →](/🎯_Gommage_et_Clonage)")
+        st.markdown("""
+        - Gommage d'objets
+        - Clone Stamp
+        - Healing Brush
+        """)
+        
+        st.markdown("---")
+        
         # Informations
         st.subheader("ℹ️ Informations")
         st.markdown(f"""
