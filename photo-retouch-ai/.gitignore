@@ -1,0 +1,115 @@
+# PhotoRetouch AI - Fichier .gitignore
+# Spécifie les fichiers et dossiers à ignorer par Git
+
+# ============================================
+# ENVIRONNEMENT VIRTUEL
+# ============================================
+venv/
+.env/
+.venv/
+
+# ============================================
+# PYTHON
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ============================================
+# DONNÉES GÉNÉRÉES
+# ============================================
+output/
+temp/
+logs/
+*.log
+
+# ============================================
+# MODÈLES ONNX (trop volumineux pour Git)
+# ============================================
+models/*.onnx
+models/*.bin
+models/*.pth
+models/*.h5
+
+# ============================================
+# FICHIERS DE CONFIGURATION LOCALE
+# ============================================
+config.yaml
+config.local.yaml
+.env
+.env.local
+.env.*.local
+
+# ============================================
+# IDE / ÉDITEURS
+# ============================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# ============================================
+# SYSTÈME
+# ============================================
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.swp
+*~
+
+# ============================================
+# STREAMLIT
+# ============================================
+.streamlit/
+
+# ============================================
+# TESTS ET COVERAGE
+# ============================================
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+
+# ============================================
+# DOCUMENTATION GÉNÉRÉE
+# ============================================
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# ============================================
+# FICHIERS TEMPORAIRES
+# ============================================
+*.bak
+*.backup
+*.old
+*~

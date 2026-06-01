@@ -1,0 +1,29 @@
+# PhotoRetouch AI - Dépendances Python
+# Application de retouche photo locale avec IA (100% hors ligne)
+
+# Interface utilisateur
+streamlit==1.32.0
+
+# Traitement d'images
+opencv-python-headless==4.9.0.80
+Pillow==10.2.0
+numpy==1.26.4
+
+# Accélération IA (ONNX Runtime)
+onnxruntime==1.18.0
+onnx==1.16.0
+
+# Modèles et utilitaires
+mediapipe==0.10.11
+scikit-image==0.22.0
+scipy==1.12.0
+
+# Gestion des fichiers et configuration
+pyyaml==6.0.1
+
+# Pour le téléchargement des modèles (optionnel)
+requests==2.31.0
+tqdm==4.66.2
+
+# Compatibilité système
+python>=3.8
