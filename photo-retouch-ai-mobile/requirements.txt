@@ -1,0 +1,27 @@
+# PhotoRetouch AI - Dépendances pour Android
+# Application mobile avec Kivy
+
+# Interface utilisateur (Kivy)
+kivy==2.2.1
+kivymd==1.1.1
+
+# Traitement d'images
+opencv-python-headless==4.9.0.80
+Pillow==10.2.0
+numpy==1.26.4
+
+# IA et modèles
+mediapipe==0.10.11
+onnxruntime==1.18.0
+
+# Pour Android (Buildozer)
+python-for-android>=2023.11.29
+buildozer>=1.5.0
+
+# Pour BeeWare Briefcase
+briefcase>=0.3.15
+
+# Dépendances optionnelles pour le développement
+requests==2.31.0
+tqdm==4.66.2
+pyyaml==6.0.1

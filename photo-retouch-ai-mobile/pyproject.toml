@@ -1,0 +1,83 @@
+[build-system]
+requires = [
+    "briefcase>=0.3.15",
+    "setuptools>=65.0.0",
+    "wheel>=0.37.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "photoretouch-ai"
+version = "1.0.0"
+description = "Application de retouche photo locale avec IA - Sans censure"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "PhotoRetouch AI", email = "vibe@nuage.app"}
+]
+keywords = ["photo", "retouche", "IA", "android", "mobile"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Android",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Multimedia :: Graphics :: Editors",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/fredrandon-prog/Mod-op-rq-ventes"
+Source = "https://github.com/fredrandon-prog/Mod-op-rq-ventes"
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0",
+    "flake8>=6.0",
+    "mypy>=1.0",
+    "pytest>=7.0",
+]
+
+[tool.setuptools]
+packages = ["photoretouch_ai"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+"" = ["**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.onnx", "**/*.yaml", "**/*.json"]
+
+[tool.briefcase]
+project_name = "PhotoRetouch AI"
+bundle_identifier = "app.photoretouch.ai"
+version = "1.0.0"
+url = "https://github.com/fredrandon-prog/Mod-op-rq-ventes"
+author = "PhotoRetouch AI"
+author_email = "vibe@nuage.app"
+license = "MIT"
+description = "Application de retouche photo locale avec IA pour Android"
+
+[tool.briefcase.app.photoretouch-ai]
+# Configuration pour l'application mobile
+formal_name = "PhotoRetouch AI"
+icon = "src/photoretouch_ai/assets/icon.png"
+splash = "src/photoretouch_ai/assets/splash.png"
+
+# Configuration Android
+[tool.briefcase.app.photoretouch-ai.android]
+# Permissions Android
+permissions = [
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.CAMERA",
+    "android.permission.INTERNET",  # Pour télécharger les modèles si nécessaire
+]
+
+# Configuration de l'interface
+[tool.briefcase.app.photoretouch-ai.linux]
+[tool.briefcase.app.photoretouch-ai.macOS]
+[tool.briefcase.app.photoretouch-ai.windows]
+[tool.briefcase.app.photoretouch-ai.iOS]

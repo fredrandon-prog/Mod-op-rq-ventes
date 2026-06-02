@@ -1,0 +1,84 @@
+[core]
+# Configuration principale de Briefcase
+project_name = "PhotoRetouch AI"
+version = "1.0.0"
+bundle = "app.photoretouch.ai"
+url = "https://github.com/fredrandon-prog/Mod-op-rq-ventes"
+author = "PhotoRetouch AI"
+author_email = "vibe@nuage.app"
+license = "MIT"
+description = "Application de retouche photo locale avec IA pour Android - Sans censure"
+
+# Répertoire source
+source_dir = "src"
+
+# Répertoire de build
+build_dir = "build"
+
+# Répertoire de distribution
+dist_dir = "dist"
+
+# Fichier d'entrée principal
+main_module = "photoretouch_ai.__main__"
+
+# Icône de l'application (sera générée si non existante)
+icon = "src/photoretouch_ai/assets/icon.png"
+
+# Écran de splash (optionnel)
+splash = "src/photoretouch_ai/assets/splash.png"
+
+# Couleurs de l'application
+primary_color = "#2196F3"
+background_color = "#1E1E1E"
+text_color = "#FFFFFF"
+
+# Configuration Android
+[android]
+# Version minimale de l'API Android
+min_api_version = 24  # Android 7.0 Nougat (recommandé pour S23)
+target_api_version = 34  # Android 14
+
+# Configuration du SDK
+compile_sdk_version = 34
+build_tools_version = "34.0.0"
+
+# Permissions Android
+permissions = [
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.CAMERA",
+    "android.permission.INTERNET",
+    "android.permission.ACCESS_NETWORK_STATE",
+]
+
+# Fonctionnalités requises
+features = [
+    "android.hardware.camera",
+    "android.hardware.camera.autofocus",
+]
+
+# Configuration de l'application
+application_id = "app.photoretouch.ai"
+version_code = 1
+version_name = "1.0.0"
+
+# Configuration de l'interface
+# Orientation (portrait ou landscape)
+screen_orientation = "portrait"
+
+# Thème (light ou dark)
+theme = "dark"
+
+# Configuration iOS (pour référence)
+[iOS]
+# Version minimale iOS
+min_os_version = "14.0"
+
+# Configuration Linux
+[linux]
+
+# Configuration macOS
+[macOS]
+
+# Configuration Windows
+[windows]

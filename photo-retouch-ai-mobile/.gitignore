@@ -1,0 +1,127 @@
+# PhotoRetouch AI Mobile - Fichier .gitignore
+# Spécifie les fichiers et dossiers à ignorer par Git
+
+# ============================================
+# ENVIRONNEMENT VIRTUEL
+# ============================================
+venv/
+.env/
+.venv/
+
+# ============================================
+# PYTHON
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ============================================
+# BUILD ANDROID
+# ============================================
+build/
+dist/
+*.apk
+*.aab
+*.so
+*.o
+*.obj
+
+# Dossiers de build Android
+android/
+platform_build/
+
+# ============================================
+# KIVY
+# ============================================
+.kivy/
+
+# ============================================
+# DONNÉES GÉNÉRÉES
+# ============================================
+output/
+temp/
+logs/
+*.log
+
+# ============================================
+# MODÈLES ONNX (trop volumineux pour Git)
+# ============================================
+models/*.onnx
+models/*.bin
+
+# ============================================
+# FICHIERS DE CONFIGURATION LOCALE
+# ============================================
+local.properties
+
+# ============================================
+# IDE / ÉDITEURS
+# ============================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# ============================================
+# SYSTÈME
+# ============================================
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.swp
+*~
+
+# ============================================
+# ANDROID STUDIO
+# ============================================
+.AndroidStudio*
+*.iml
+.idea/
+gradle/
+local.properties
+
+# ============================================
+# BRIEFCASE
+# ============================================
+.briefcase/
+
+# ============================================
+# BUILDOZER
+# ============================================
+.bin/
+
+# ============================================
+# FICHIERS TEMPORAIRES
+# ============================================
+*.bak
+*.backup
+*.old
+*~
