@@ -160,14 +160,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun openInCarrefour(query: String?) {
         val search = query?.takeIf { it.isNotBlank() } ?: items.filter { !it.done }.joinToString(" ") { it.name }
+        val encoded = URLEncoder.encode(search, "UTF-8").replace("+", "%20")
         val url = if (search.isBlank())
             "https://www.carrefour.fr/"
         else
-            "https://www.carrefour.fr/recherche?q=" + URLEncoder.encode(search, "UTF-8")
+            "https://www.carrefour.fr/s?search=$encoded"
         try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                setPackage("com.carrefour.fid.android")
+            }
+            startActivity(intent)
         } catch (e: Exception) {
-            Toast.makeText(this, "Aucune application pour ouvrir ce lien", Toast.LENGTH_SHORT).show()
+            try {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+            } catch (e2: Exception) {
+                Toast.makeText(this, "Aucune application pour ouvrir ce lien", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
